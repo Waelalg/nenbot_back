@@ -1,4 +1,4 @@
-from app.config import EMBEDDING_MODEL
+﻿from ..config import EMBEDDING_MODEL
 
 _model = None
 
@@ -26,3 +26,5 @@ def embed_query(text: str) -> list[float]:
     model = get_embedding_model()
     vector = model.encode([text], convert_to_numpy=True, normalize_embeddings=True)[0]
     return vector.tolist()
+
+

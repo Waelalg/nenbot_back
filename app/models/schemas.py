@@ -50,6 +50,23 @@ class ChatResponse(BaseModel):
     session_id: str
 
 
+class VoiceSpeakRequest(BaseModel):
+    text: str = Field(..., min_length=1, max_length=4000)
+
+    @field_validator("text")
+    @classmethod
+    def strip_text(cls, value: str) -> str:
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("Text cannot be empty.")
+        return cleaned
+
+
+class VoiceTranscriptionResponse(BaseModel):
+    text: str
+    model: str
+
+
 class ResetRequest(BaseModel):
     session_id: str = Field(..., min_length=1, max_length=120)
 

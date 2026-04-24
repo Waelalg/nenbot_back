@@ -1,9 +1,9 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from collections import defaultdict
 from copy import deepcopy
 
-from app.config import MEMORY_TURNS
+from ..config import MEMORY_TURNS
 
 
 class MemoryService:
@@ -69,3 +69,5 @@ class MemoryService:
 
 
 memory_service = MemoryService()
+
+

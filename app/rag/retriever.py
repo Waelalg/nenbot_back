@@ -1,6 +1,6 @@
-from app.config import MAX_CONTEXT_CHUNKS
-from app.rag.embeddings import embed_query
-from app.rag.vector_store import query_documents
+﻿from ..config import MAX_CONTEXT_CHUNKS
+from .embeddings import embed_query
+from .vector_store import query_documents
 
 
 def build_context(query: str) -> tuple[str, list[str]]:
@@ -18,3 +18,5 @@ def build_context(query: str) -> tuple[str, list[str]]:
         context_parts.append(f"[SOURCE: {source}]\n{doc}")
 
     return "\n\n".join(context_parts), sorted(set(sources))
+
+

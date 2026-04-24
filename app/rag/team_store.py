@@ -1,6 +1,6 @@
-import json
+﻿import json
 from pathlib import Path
-from app.config import TEAM_FILE
+from ..config import TEAM_FILE
 
 
 def load_team_data() -> list[dict]:
@@ -25,3 +25,5 @@ def format_team_context() -> str:
             f"field_of_study={member.get('field_of_study', 'N/A')}"
         )
     return "\n".join(lines)
+
+

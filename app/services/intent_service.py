@@ -1,11 +1,11 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass
 
-from app.config import ALLOWED_SMALLTALK
-from app.data.hxh_aliases import HXH_KEYWORDS, basic_normalize, contains_any, normalize_hxh_query
-from app.models.schemas import Intent
-from app.services.team_service import team_service
+from ..config import ALLOWED_SMALLTALK
+from ..data.hxh_aliases import HXH_KEYWORDS, basic_normalize, contains_any, normalize_hxh_query
+from ..models.schemas import Intent
+from .team_service import team_service
 
 
 @dataclass(frozen=True)
@@ -72,3 +72,5 @@ def refusal_message() -> str:
         "I can help with Hunter x Hunter lore, characters, Nen, arcs, factions, "
         "abilities, and the team details stored for this project."
     )
+
+

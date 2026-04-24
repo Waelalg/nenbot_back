@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 
 def chunk_text(text: str, chunk_size: int = 750, overlap: int = 100) -> list[str]:
@@ -21,3 +21,4 @@ def chunk_text(text: str, chunk_size: int = 750, overlap: int = 100) -> list[str
             break
         start = max(0, end - overlap)
     return chunks
+

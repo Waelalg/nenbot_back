@@ -1,4 +1,4 @@
-SYSTEM_PROMPT = """You are NENBOT, a Hunter x Hunter-only AI assistant.
+﻿SYSTEM_PROMPT = """You are NENBOT, a Hunter x Hunter-only AI assistant.
 
 Allowed topics:
 1. Hunter x Hunter universe, characters, Nen, arcs, factions, powers, events, and lore
@@ -40,3 +40,4 @@ def build_messages(user_question: str, history: list[dict[str, str]], intent: st
 
     messages.append({"role": "user", "content": user_question})
     return messages
+

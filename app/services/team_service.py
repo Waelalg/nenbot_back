@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 import re
@@ -6,8 +6,8 @@ from dataclasses import dataclass
 from difflib import SequenceMatcher, get_close_matches
 from pathlib import Path
 
-from app.config import TEAM_FILE
-from app.models.schemas import TeamMember
+from ..config import TEAM_FILE
+from ..models.schemas import TeamMember
 
 
 def _clean(value: object) -> str:
@@ -309,3 +309,5 @@ class TeamService:
 
 
 team_service = TeamService()
+
+

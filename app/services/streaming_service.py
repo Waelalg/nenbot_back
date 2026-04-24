@@ -1,19 +1,19 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 import logging
 import re
 from collections.abc import Iterator
 
-from app.models.schemas import ChatRequest, ChatResponse
-from app.services.chat_service import _is_clearly_unrelated
-from app.services.intent_service import classify_message, refusal_message
-from app.services.llm_service import llm_service
-from app.services.memory_service import memory_service
-from app.services.prompt_service import build_messages
-from app.services.question_type_service import detect_question_type
-from app.services.retrieval_service import retrieval_service
-from app.services.team_service import team_service
+from ..models.schemas import ChatRequest, ChatResponse
+from .chat_service import _is_clearly_unrelated
+from .intent_service import classify_message, refusal_message
+from .llm_service import llm_service
+from .memory_service import memory_service
+from .prompt_service import build_messages
+from .question_type_service import detect_question_type
+from .retrieval_service import retrieval_service
+from .team_service import team_service
 
 logger = logging.getLogger(__name__)
 
@@ -172,3 +172,5 @@ class StreamingService:
 
 
 streaming_service = StreamingService()
+
+

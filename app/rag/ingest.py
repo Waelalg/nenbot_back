@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import sys
 from pathlib import Path
@@ -7,10 +7,10 @@ from uuid import uuid4
 if __package__ in {None, ""}:
     sys.path.append(str(Path(__file__).resolve().parents[3]))
 
-from app.config import HXH_DIR
-from app.rag.chunker import chunk_text
-from app.rag.embeddings import embed_texts
-from app.rag.vector_store import add_documents, count_documents, reset_collection
+from ..config import HXH_DIR
+from .chunker import chunk_text
+from .embeddings import embed_texts
+from .vector_store import add_documents, count_documents, reset_collection
 
 
 def read_markdown_files(root: Path) -> list[tuple[str, str]]:
@@ -88,3 +88,5 @@ if __name__ == "__main__":
     print(f"Files loaded: {summary['files_loaded']}")
     print(f"Chunks created: {summary['chunks_created']}")
     print(f"Collection count: {summary['collection_count']}")
+
+

@@ -1,5 +1,5 @@
-from openai import OpenAI
-from app.config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
+﻿from openai import OpenAI
+from ..config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
 
 
 def get_client() -> OpenAI:
@@ -17,3 +17,5 @@ def generate_answer(messages: list[dict[str, str]]) -> str:
         max_tokens=700,
     )
     return (response.choices[0].message.content or "").strip()
+
+

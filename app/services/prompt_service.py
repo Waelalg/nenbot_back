@@ -1,6 +1,6 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
-from app.models.schemas import Intent
+from ..models.schemas import Intent
 
 
 SYSTEM_PROMPT = """You are NENBOT, a Hunter x Hunter-only RAG assistant.
@@ -65,3 +65,5 @@ def build_messages(
         },
         {"role": "user", "content": user_question},
     ]
+
+

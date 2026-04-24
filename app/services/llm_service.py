@@ -1,10 +1,10 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import logging
 
 from openai import OpenAI
 
-from app.config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
+from ..config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -56,3 +56,5 @@ class LLMService:
 
 
 llm_service = LLMService()
+
+

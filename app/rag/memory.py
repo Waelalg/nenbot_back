@@ -1,5 +1,5 @@
-from collections import defaultdict
-from app.config import MEMORY_TURNS
+﻿from collections import defaultdict
+from ..config import MEMORY_TURNS
 
 # Stores full messages, trimmed to the last MEMORY_TURNS user-assistant pairs.
 _memory_store: dict[str, list[dict[str, str]]] = defaultdict(list)
@@ -19,3 +19,5 @@ def add_turn(session_id: str, user_message: str, assistant_message: str) -> None
 
 def reset_session(session_id: str) -> None:
     _memory_store.pop(session_id, None)
+
+

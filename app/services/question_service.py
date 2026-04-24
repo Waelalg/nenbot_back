@@ -1,9 +1,9 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 from typing import Literal
 
-from app.models.schemas import Intent
+from ..models.schemas import Intent
 
 
 QuestionType = Literal[
@@ -63,3 +63,5 @@ def detect_question_type(query: str, intent: Intent, matched_member: str | None 
     if text.startswith(("who is", "who are", "tell me about", "do you know")):
         return "identity"
     return "definition"
+
+

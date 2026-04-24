@@ -1,5 +1,5 @@
-from typing import Any
-from app.config import CHROMA_DIR, COLLECTION_NAME
+﻿from typing import Any
+from ..config import CHROMA_DIR, COLLECTION_NAME
 
 _client = None
 _collection = None
@@ -52,3 +52,5 @@ def query_documents(query_embedding: list[float], n_results: int = 4) -> dict[st
 def count_documents() -> int:
     collection = get_collection()
     return int(collection.count())
+
+

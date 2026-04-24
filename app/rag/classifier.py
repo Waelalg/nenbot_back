@@ -1,5 +1,5 @@
-import re
-from app.config import ALLOWED_SMALLTALK
+﻿import re
+from ..config import ALLOWED_SMALLTALK
 
 HXH_KEYWORDS = {
     "hunter x hunter", "hunterxhunter", "gon", "killua", "kurapika", "leorio", "hisoka",
@@ -34,3 +34,5 @@ def classify_intent(message: str) -> str:
         return "hxh_knowledge"
 
     return "out_of_scope"
+
+

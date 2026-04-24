@@ -1,15 +1,15 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 
-from app.models.schemas import ChatResponse
-from app.services.intent_service import classify_message, refusal_message
-from app.services.llm_service import llm_service
-from app.services.memory_service import memory_service
-from app.services.question_service import detect_question_type
-from app.services.retrieval_service import retrieval_service
-from app.services.team_service import team_service
-from app.services.prompt_service import build_messages
+from ..models.schemas import ChatResponse
+from .intent_service import classify_message, refusal_message
+from .llm_service import llm_service
+from .memory_service import memory_service
+from .question_service import detect_question_type
+from .retrieval_service import retrieval_service
+from .team_service import team_service
+from .prompt_service import build_messages
 
 
 CLEAR_OUT_OF_SCOPE_TERMS = {
@@ -147,3 +147,5 @@ class ChatService:
 
 
 chat_service = ChatService()
+
+

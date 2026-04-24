@@ -1,12 +1,12 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
 
-from app.config import MAX_CONTEXT_CHUNKS
-from app.data.hxh_aliases import enrich_retrieval_query
-from app.rag.embeddings import embed_query
-from app.rag.vector_store import count_documents, query_documents
+from ..config import MAX_CONTEXT_CHUNKS
+from ..data.hxh_aliases import enrich_retrieval_query
+from ..rag.embeddings import embed_query
+from ..rag.vector_store import count_documents, query_documents
 
 logger = logging.getLogger(__name__)
 
@@ -75,3 +75,5 @@ class RetrievalService:
 
 
 retrieval_service = RetrievalService()
+
+
