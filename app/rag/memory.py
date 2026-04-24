@@ -1,4 +1,4 @@
-﻿from collections import defaultdict
+from collections import defaultdict
 from ..config import MEMORY_TURNS
 
 # Stores full messages, trimmed to the last MEMORY_TURNS user-assistant pairs.

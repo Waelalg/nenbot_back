@@ -1,15 +1,16 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import re
 
 from ..models.schemas import ChatResponse
+from .fallback_answer_service import fallback_answer_service
 from .intent_service import classify_message, refusal_message
 from .llm_service import llm_service
 from .memory_service import memory_service
 from .question_service import detect_question_type
+from .prompt_service import build_messages
 from .retrieval_service import retrieval_service
 from .team_service import team_service
-from .prompt_service import build_messages
 
 
 CLEAR_OUT_OF_SCOPE_TERMS = {
@@ -115,7 +116,15 @@ class ChatService:
                 retrieved_context=retrieval.context,
                 team_context="",
             )
-            answer = llm_service.generate(messages)
+            try:
+                answer = llm_service.generate(messages)
+            except RuntimeError:
+                answer = fallback_answer_service.build_answer(
+                    query=normalized_query,
+                    question_type=question_type,
+                    retrieved_context=retrieval.context,
+                    detected_entities=detected_entities,
+                )
 
         if detected_entities:
             memory_service.set_last_hxh_entity(session_id, detected_entities[0])
@@ -147,5 +156,4 @@ class ChatService:
 
 
 chat_service = ChatService()
-
 

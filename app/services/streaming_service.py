@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 import logging
@@ -7,6 +7,7 @@ from collections.abc import Iterator
 
 from ..models.schemas import ChatRequest, ChatResponse
 from .chat_service import _is_clearly_unrelated
+from .fallback_answer_service import fallback_answer_service
 from .intent_service import classify_message, refusal_message
 from .llm_service import llm_service
 from .memory_service import memory_service
@@ -117,10 +118,39 @@ class StreamingService:
             )
 
             full_answer: list[str] = []
+            streamed_any_token = False
             yield _sse({"token": ""})
-            for token in llm_service.stream(messages):
-                full_answer.append(token)
-                yield _sse({"token": token})
+            try:
+                for token in llm_service.stream(messages):
+                    full_answer.append(token)
+                    if token:
+                        streamed_any_token = True
+                    yield _sse({"token": token})
+            except RuntimeError:
+                logger.exception("Groq streaming failed; using local Hunter x Hunter fallback answer")
+                fallback_answer = fallback_answer_service.build_answer(
+                    query=normalized_query,
+                    question_type=question_type,
+                    retrieved_context=retrieval.context,
+                    detected_entities=detected_entities,
+                )
+                if streamed_any_token and "".join(full_answer).strip():
+                    continuation = (
+                        "\n\nThe live model response was interrupted, so I completed the answer from the local "
+                        "Hunter x Hunter knowledge base.\n\n"
+                        + fallback_answer
+                    )
+                    for chunk in _small_chunks(continuation):
+                        yield _sse({"token": chunk})
+                    answer = "".join(full_answer).strip() + continuation
+                    if detected_entities:
+                        memory_service.set_last_hxh_entity(req.session_id, detected_entities[0])
+                    memory_service.add_interaction(req.session_id, req.message, answer, intent, detected_entities)
+                    yield _sse(metadata, event="metadata")
+                    yield _sse({}, event="done")
+                    return
+                yield from self._stream_static(req, fallback_answer, metadata)
+                return
 
             answer = "".join(full_answer).strip()
             if detected_entities:
@@ -172,5 +202,4 @@ class StreamingService:
 
 
 streaming_service = StreamingService()
-
 

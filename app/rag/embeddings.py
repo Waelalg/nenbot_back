@@ -1,4 +1,4 @@
-﻿from ..config import EMBEDDING_MODEL
+from ..config import EMBEDDING_MODEL
 
 _model = None
 

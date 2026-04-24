@@ -1,4 +1,4 @@
-﻿from ..config import MAX_CONTEXT_CHUNKS
+from ..config import MAX_CONTEXT_CHUNKS
 from .embeddings import embed_query
 from .vector_store import query_documents
 

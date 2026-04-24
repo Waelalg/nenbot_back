@@ -1,4 +1,4 @@
-﻿from typing import Any
+from typing import Any
 from ..config import CHROMA_DIR, COLLECTION_NAME
 
 _client = None

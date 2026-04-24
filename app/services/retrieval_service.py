@@ -1,7 +1,8 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
+import re
 
 from ..config import MAX_CONTEXT_CHUNKS
 from ..data.hxh_aliases import enrich_retrieval_query
@@ -9,6 +10,16 @@ from ..rag.embeddings import embed_query
 from ..rag.vector_store import count_documents, query_documents
 
 logger = logging.getLogger(__name__)
+GENERIC_TOKENS = {"hunter", "x", "arc", "family", "group", "city", "topic", "character", "characters"}
+
+
+def _ranking_tokens(query: str, detected_entities: list[str]) -> set[str]:
+    tokens = {
+        token
+        for token in re.findall(r"[a-z0-9]+", f"{query} {' '.join(detected_entities)}".lower())
+        if len(token) >= 4 and token not in GENERIC_TOKENS
+    }
+    return tokens
 
 
 @dataclass
@@ -46,9 +57,19 @@ class RetrievalService:
         context_parts: list[str] = []
         sources: list[str] = []
         ranked_rows = []
+        ranking_tokens = _ranking_tokens(query, detected_entities)
         for index, (doc, meta) in enumerate(zip(docs, metadatas)):
             haystack = f"{doc} {meta or {}}".lower()
+            meta_haystack = (
+                f"{(meta or {}).get('source', '')} {(meta or {}).get('topic', '')} {(meta or {}).get('section', '')}"
+            ).lower()
             bonus = sum(1 for entity in detected_entities if entity.lower() in haystack)
+            bonus += sum(0.35 for token in ranking_tokens if token in meta_haystack)
+            bonus += sum(0.12 for token in ranking_tokens if token in haystack)
+            if question_type == "arc_summary" and ("arc" in meta_haystack or "chimera" in meta_haystack):
+                bonus += 0.35
+            if "qa_examples" in meta_haystack:
+                bonus -= 0.35
             distance = distances[index] if index < len(distances) else 99.0
             ranked_rows.append((distance - (bonus * 0.15), distance, doc, meta))
 
@@ -75,5 +96,4 @@ class RetrievalService:
 
 
 retrieval_service = RetrievalService()
-
 

@@ -1,4 +1,4 @@
-﻿import json
+import json
 from pathlib import Path
 from ..config import TEAM_FILE
 

@@ -40,6 +40,8 @@ Chimera Ants evolve into a massive threat. Meruem is born as king, protected by 
 Main characters: Meruem, Komugi, Netero, Gon, Killua, Kite, Neferpitou, Shaiapouf, Youpi.
 Important events: Kite's fate, palace invasion, Netero vs Meruem, Gon vs Pitou, Meruem and Komugi's bond.
 Why it matters: explores humanity, power, sacrifice, and morality.
+Conflict: an existential crisis forces Hunters to confront enemies who rapidly evolve beyond human expectations.
+Important concepts: Chimera Ant evolution, Royal Guards, extreme Nen vows, palace invasion strategy, Meruem's growth through Komugi.
 
 ## Arc: 13th Hunter Chairman Election
 Summary:

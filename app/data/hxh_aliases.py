@@ -16,7 +16,7 @@ HXH_ALIASES: dict[str, list[str]] = {
     "Hunter Association": ["hunter association", "hunters association", "hunters", "hunter", "hunter exam"],
     "Greed Island": ["greed island", "green island", "greed island game"],
     "Chimera Ant arc": ["chimera ant", "chimera ants", "kimera ant", "chimera ant arc"],
-    "Nen": ["nen", "aura", "hatsu", "ten", "ren", "zetsu", "gyo", "en", "ko", "ken", "ryu", "shu", "in"],
+    "Nen": ["nen", "aura", "hatsu", "ten", "ren", "zetsu", "gyo", "en", "ko", "ken", "ryu", "shu"],
     "Zoldyck Family": ["zoldyck", "zoldyck family", "zoldick", "killua family"],
     "Meruem": ["meruem", "merum", "mereum"],
     "Komugi": ["komugi"],

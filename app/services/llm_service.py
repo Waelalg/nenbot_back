@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import logging
 
@@ -17,7 +17,12 @@ class LLMService:
         if not GROQ_API_KEY:
             raise RuntimeError("Missing GROQ_API_KEY. Add it to .env before using generated answers.")
         if self._client is None:
-            self._client = OpenAI(api_key=GROQ_API_KEY, base_url=GROQ_BASE_URL)
+            self._client = OpenAI(
+                api_key=GROQ_API_KEY,
+                base_url=GROQ_BASE_URL,
+                max_retries=3,
+                timeout=45.0,
+            )
         return self._client
 
     def generate(self, messages: list[dict[str, str]]) -> str:
@@ -26,7 +31,7 @@ class LLMService:
                 model=GROQ_MODEL,
                 messages=messages,
                 temperature=0.15,
-                max_tokens=700,
+                max_tokens=900,
             )
         except Exception as exc:
             logger.exception("Groq generation failed")
@@ -43,7 +48,7 @@ class LLMService:
                 model=GROQ_MODEL,
                 messages=messages,
                 temperature=0.15,
-                max_tokens=700,
+                max_tokens=900,
                 stream=True,
             )
             for chunk in stream:
@@ -56,5 +61,4 @@ class LLMService:
 
 
 llm_service = LLMService()
-
 

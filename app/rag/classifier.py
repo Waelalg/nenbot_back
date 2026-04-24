@@ -1,4 +1,4 @@
-﻿import re
+import re
 from ..config import ALLOWED_SMALLTALK
 
 HXH_KEYWORDS = {
