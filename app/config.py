@@ -40,6 +40,7 @@ if not CHROMA_DIR.is_absolute():
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_BASE_URL = os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+GROQ_VISION_MODEL = os.getenv("GROQ_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
 VOICE_STT_MODEL = os.getenv("VOICE_STT_MODEL", "whisper-large-v3-turbo")
 VOICE_TTS_MODEL = os.getenv("VOICE_TTS_MODEL", "canopylabs/orpheus-v1-english")
 VOICE_TTS_VOICE = os.getenv("VOICE_TTS_VOICE", "troy")

@@ -50,6 +50,24 @@ class ChatResponse(BaseModel):
     session_id: str
 
 
+class VisionRecognitionResponse(BaseModel):
+    answer: str
+    mode: str = "vision"
+    intent: Intent
+    question_type: QuestionType = "identity"
+    normalized_query: str
+    detected_entities: list[str] = Field(default_factory=list)
+    recognized_entity: str | None = None
+    entity_type: str = "unknown"
+    confidence: str = "unknown"
+    reasoning: str | None = None
+    top_guesses: list[str] = Field(default_factory=list)
+    follow_up_suggestions: list[str] = Field(default_factory=list)
+    memory_used: bool
+    session_id: str
+    sources: list[str] = Field(default_factory=list)
+
+
 class VoiceSpeakRequest(BaseModel):
     text: str = Field(..., min_length=1, max_length=4000)
 

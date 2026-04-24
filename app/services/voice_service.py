@@ -16,7 +16,7 @@ from ..config import (
 
 logger = logging.getLogger(__name__)
 
-_TRANSCRIBE_ENDPOINT: Final[str] = "/audio/transcriptions"
+_TRANSLATE_ENDPOINT: Final[str] = "/audio/translations"
 _SPEECH_ENDPOINT: Final[str] = "/audio/speech"
 _CONTENT_TYPE_MAP: Final[dict[str, str]] = {
     "wav": "audio/wav",
@@ -63,14 +63,15 @@ class VoiceService:
             "model": VOICE_STT_MODEL,
             "response_format": "json",
             "temperature": "0",
-            "prompt": _TRANSCRIPTION_PROMPT,
+            "prompt": _TRANSCRIPTION_PROMPT + " Return the final transcript in clear English.",
+            "language": "en",
         }
-        if language:
-            data["language"] = language
+        if language and language.strip().lower() == "en":
+            data["language"] = "en"
 
         try:
             response = requests.post(
-                self._api_url(_TRANSCRIBE_ENDPOINT),
+                self._api_url(_TRANSLATE_ENDPOINT),
                 headers=self._headers(),
                 data=data,
                 files=files,
@@ -78,14 +79,14 @@ class VoiceService:
             )
             response.raise_for_status()
         except requests.RequestException as exc:
-            message = self._friendly_error(exc, "NENBOT could not transcribe the recorded audio.")
-            logger.warning("Groq transcription failed: %s", message)
+            message = self._friendly_error(exc, "NENBOT could not transcribe the recorded audio into English.")
+            logger.warning("Groq English translation failed: %s", message)
             raise RuntimeError(message) from exc
 
         payload = response.json()
         transcript = str(payload.get("text") or "").strip()
         if not transcript:
-            raise RuntimeError("The transcription result was empty.")
+            raise RuntimeError("The English transcription result was empty.")
         return transcript
 
     def synthesize_speech(self, text: str) -> tuple[bytes, str]:
@@ -138,5 +139,3 @@ class VoiceService:
 
 
 voice_service = VoiceService()
-
-

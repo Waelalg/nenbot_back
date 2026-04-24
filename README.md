@@ -25,6 +25,7 @@ Create `.env` from `.env.example` on the backend host. Never commit `.env`.
 GROQ_API_KEY=your_groq_api_key
 GROQ_BASE_URL=https://api.groq.com/openai/v1
 GROQ_MODEL=llama-3.1-8b-instant
+GROQ_VISION_MODEL=meta-llama/llama-4-scout-17b-16e-instruct
 VOICE_STT_MODEL=whisper-large-v3-turbo
 VOICE_TTS_MODEL=canopylabs/orpheus-v1-english
 VOICE_TTS_VOICE=troy
@@ -66,9 +67,15 @@ http://localhost:8000/health
 - `GET /health`
 - `POST /chat`
 - `POST /chat/stream`
+- `POST /vision/identify`
 - `POST /voice/transcribe`
 - `POST /voice/speak`
 - `POST /reset`
 - `POST /ingest`
 - `GET /team`
 - `GET /sources`
+
+## Notes
+
+- `POST /voice/transcribe` now uses Groq's English translation path so recorded speech is returned as English text.
+- `POST /vision/identify` returns a grounded Hunter x Hunter answer plus confidence, top guesses for unclear images, and suggested follow-up prompts.
