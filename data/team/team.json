@@ -1,0 +1,42 @@
+[
+  {
+    "full_name": "Mohamed Ouail",
+    "aliases": ["Mohamed", "Ouail"],
+    "academic_level": "5th year",
+    "age": "23",
+    "university_name": "higher school of computer science (ESI SBA)",
+    "field_of_study": "computer science"
+  },
+  {
+    "full_name": "Fodhil benhiba",
+    "aliases": ["Fodhil", "benhiba"],
+    "academic_level": "4th year",
+    "age": "22",
+    "university_name": "higher school of computer science (ESI SBA)",
+    "field_of_study": "computer science"
+  },
+  {
+    "full_name": "islem bounouala",
+    "aliases": ["islem", "bounouala"],
+    "academic_level": "4th year",
+    "age": "22",
+    "university_name": "higher school of computer science (ESI SBA)",
+    "field_of_study": "computer science"
+  },
+  {
+    "full_name": "Benbait mohamed essadik",
+    "aliases": ["Benbait", "mohamed essadik"],
+    "academic_level": "4th year",
+    "age": "22",
+    "university_name": "higher school of computer science (ESI SBA)",
+    "field_of_study": "computer science"
+  },
+  {
+    "full_name": "khodour aboud",
+    "aliases": ["khodour", "aboud"],
+    "academic_level": "4th year",
+    "age": "22",
+    "university_name": "higher school of computer science (ESI SBA)",
+    "field_of_study": "computer science"
+  }
+]
