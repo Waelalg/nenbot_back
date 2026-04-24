@@ -6,8 +6,8 @@ from dataclasses import dataclass
 from difflib import SequenceMatcher, get_close_matches
 from pathlib import Path
 
-from backend.app.config import TEAM_FILE
-from backend.app.models.schemas import TeamMember
+from app.config import TEAM_FILE
+from app.models.schemas import TeamMember
 
 
 def _clean(value: object) -> str:
@@ -224,7 +224,7 @@ class TeamService:
     def answer_team_question(self, query: str, last_member_name: str | None = None) -> TeamAnswer:
         if not self._members:
             return TeamAnswer(
-                answer="No team information is available yet. Add the project team details in backend/data/team/team.json.",
+                answer="No team information is available yet. Add the project team details in data/team/team.json.",
                 matched_member=None,
                 matched_alias=None,
             )

@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from backend.app.config import ALLOWED_SMALLTALK
-from backend.app.data.hxh_aliases import HXH_KEYWORDS, basic_normalize, contains_any, normalize_hxh_query
-from backend.app.models.schemas import Intent
-from backend.app.services.team_service import team_service
+from app.config import ALLOWED_SMALLTALK
+from app.data.hxh_aliases import HXH_KEYWORDS, basic_normalize, contains_any, normalize_hxh_query
+from app.models.schemas import Intent
+from app.services.team_service import team_service
 
 
 @dataclass(frozen=True)

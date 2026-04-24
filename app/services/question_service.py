@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Literal
 
-from backend.app.models.schemas import Intent
+from app.models.schemas import Intent
 
 
 QuestionType = Literal[

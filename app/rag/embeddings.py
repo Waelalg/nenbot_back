@@ -1,4 +1,4 @@
-from backend.app.config import EMBEDDING_MODEL
+from app.config import EMBEDDING_MODEL
 
 _model = None
 

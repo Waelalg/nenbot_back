@@ -1,5 +1,5 @@
 import re
-from backend.app.config import ALLOWED_SMALLTALK
+from app.config import ALLOWED_SMALLTALK
 
 HXH_KEYWORDS = {
     "hunter x hunter", "hunterxhunter", "gon", "killua", "kurapika", "leorio", "hisoka",

@@ -5,14 +5,14 @@ import logging
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
-from backend.app.config import EMBEDDING_MODEL, GROQ_MODEL, MEMORY_TURNS
-from backend.app.models.schemas import ChatRequest, ChatResponse, HealthResponse, ResetRequest, ResetResponse
-from backend.app.rag.ingest import ingest_summary
-from backend.app.rag.vector_store import count_documents
-from backend.app.services.chat_service import chat_service
-from backend.app.services.memory_service import memory_service
-from backend.app.services.streaming_service import streaming_service
-from backend.app.services.team_service import team_service
+from app.config import EMBEDDING_MODEL, GROQ_MODEL, MEMORY_TURNS
+from app.models.schemas import ChatRequest, ChatResponse, HealthResponse, ResetRequest, ResetResponse
+from app.rag.ingest import ingest_summary
+from app.rag.vector_store import count_documents
+from app.services.chat_service import chat_service
+from app.services.memory_service import memory_service
+from app.services.streaming_service import streaming_service
+from app.services.team_service import team_service
 
 logger = logging.getLogger(__name__)
 

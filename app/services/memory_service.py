@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from copy import deepcopy
 
-from backend.app.config import MEMORY_TURNS
+from app.config import MEMORY_TURNS
 
 
 class MemoryService:

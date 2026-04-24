@@ -1,5 +1,5 @@
 from openai import OpenAI
-from backend.app.config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
+from app.config import GROQ_API_KEY, GROQ_BASE_URL, GROQ_MODEL
 
 
 def get_client() -> OpenAI:

@@ -1,5 +1,5 @@
 from collections import defaultdict
-from backend.app.config import MEMORY_TURNS
+from app.config import MEMORY_TURNS
 
 # Stores full messages, trimmed to the last MEMORY_TURNS user-assistant pairs.
 _memory_store: dict[str, list[dict[str, str]]] = defaultdict(list)

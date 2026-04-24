@@ -3,10 +3,10 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 
-from backend.app.config import MAX_CONTEXT_CHUNKS
-from backend.app.data.hxh_aliases import enrich_retrieval_query
-from backend.app.rag.embeddings import embed_query
-from backend.app.rag.vector_store import count_documents, query_documents
+from app.config import MAX_CONTEXT_CHUNKS
+from app.data.hxh_aliases import enrich_retrieval_query
+from app.rag.embeddings import embed_query
+from app.rag.vector_store import count_documents, query_documents
 
 logger = logging.getLogger(__name__)
 

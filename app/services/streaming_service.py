@@ -5,15 +5,15 @@ import logging
 import re
 from collections.abc import Iterator
 
-from backend.app.models.schemas import ChatRequest, ChatResponse
-from backend.app.services.chat_service import _is_clearly_unrelated
-from backend.app.services.intent_service import classify_message, refusal_message
-from backend.app.services.llm_service import llm_service
-from backend.app.services.memory_service import memory_service
-from backend.app.services.prompt_service import build_messages
-from backend.app.services.question_type_service import detect_question_type
-from backend.app.services.retrieval_service import retrieval_service
-from backend.app.services.team_service import team_service
+from app.models.schemas import ChatRequest, ChatResponse
+from app.services.chat_service import _is_clearly_unrelated
+from app.services.intent_service import classify_message, refusal_message
+from app.services.llm_service import llm_service
+from app.services.memory_service import memory_service
+from app.services.prompt_service import build_messages
+from app.services.question_type_service import detect_question_type
+from app.services.retrieval_service import retrieval_service
+from app.services.team_service import team_service
 
 logger = logging.getLogger(__name__)
 

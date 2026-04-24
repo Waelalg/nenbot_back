@@ -1,6 +1,6 @@
-from backend.app.config import MAX_CONTEXT_CHUNKS
-from backend.app.rag.embeddings import embed_query
-from backend.app.rag.vector_store import query_documents
+from app.config import MAX_CONTEXT_CHUNKS
+from app.rag.embeddings import embed_query
+from app.rag.vector_store import query_documents
 
 
 def build_context(query: str) -> tuple[str, list[str]]:

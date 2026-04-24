@@ -1,5 +1,5 @@
 from typing import Any
-from backend.app.config import CHROMA_DIR, COLLECTION_NAME
+from app.config import CHROMA_DIR, COLLECTION_NAME
 
 _client = None
 _collection = None

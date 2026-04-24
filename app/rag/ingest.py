@@ -7,10 +7,10 @@ from uuid import uuid4
 if __package__ in {None, ""}:
     sys.path.append(str(Path(__file__).resolve().parents[3]))
 
-from backend.app.config import HXH_DIR
-from backend.app.rag.chunker import chunk_text
-from backend.app.rag.embeddings import embed_texts
-from backend.app.rag.vector_store import add_documents, count_documents, reset_collection
+from app.config import HXH_DIR
+from app.rag.chunker import chunk_text
+from app.rag.embeddings import embed_texts
+from app.rag.vector_store import add_documents, count_documents, reset_collection
 
 
 def read_markdown_files(root: Path) -> list[tuple[str, str]]:

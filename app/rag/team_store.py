@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from backend.app.config import TEAM_FILE
+from app.config import TEAM_FILE
 
 
 def load_team_data() -> list[dict]:
